@@ -72,14 +72,14 @@ export async function createTransaction (req, res)  {//this is the route that wi
 
 export async function deleteTransaction(req, res) {
   //this is the route that will be called when the user wants to delete a transaction by user ID
-  const { userId } = req.params; //this will get the user ID from the request parameters
+  const { id } = req.params; //this will get the user ID from the request parameters
   try {
-    if (isNaN(parseInt(userId))) {
+    if (isNaN(parseInt(id))) {
       //this will check if the user ID is a number
       return res.status(400).json({ error: "Invalid user ID" }); //this will send an error message as json with status code 400 (bad request)
     }
     const result =
-      await sql`DELETE FROM transactions WHERE user_id = ${userId} RETURNING *`; //this will delete the transaction with the given user ID from the database and return the deleted row
+      await sql`DELETE FROM transactions WHERE id = ${id} RETURNING *`; //this will delete the transaction with the given user ID from the database and return the deleted row
     if (result.length === 0) {
       //this will check if the transaction exists
       return res.status(404).json({ error: "Transaction not found" }); //this will send an error message as json with status code 404 (not found)

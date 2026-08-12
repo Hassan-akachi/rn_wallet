@@ -4,12 +4,18 @@ import dotenv from "dotenv";
 import { sql } from "./config/db.js";//this will import the sql instance from the db.js file that will be used to connect to the database
 import rateLimiterMiddleware from "./middleware/rate-limiter.js";//this will import the ratelimiter middleware from the rate-limiter.js file that will be used to limit the number of requests to the server
 import transactionsRoute from "./routes/transactionsRoute.js";//this will import the transactionsRoute from the transactionsRoute.js file that will be used to handle all the routes for the transactions
+import job from "./config/cron.js";//this will import the cron job that will send a GET request to the server every 14 minutes
+
+
 
 dotenv.config();//this will load the environment variables from the .env file into process.env
 
 console.log(process.env.DATABASE_URL);
 const app = express();//this is the main express app that will handle all the routes and middleware
 
+if(process.env.NODE_ENV === "production"){//this will check if the environment is production or development
+job.start();//this will start the cron job that will send a GET request to the server every 14 minutes
+}
 
 const PORT = process.env.PORT || 5001;//this will get the port from the environment variables or use 5001 as default
 

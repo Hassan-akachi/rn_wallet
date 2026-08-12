@@ -15,7 +15,7 @@ router.get("/:userId", async (req, res) => {
   getTransactionsByUserId(req, res); //this will call the getTransactionsByUserId function that will get the transactions for the given user from the database
 });
 
-router.delete("/:userId", deleteTransaction); //this is the route that will be called when the user wants to delete a transaction by user ID
+router.delete("/:id", deleteTransaction); //this is the route that will be called when the user wants to delete a transaction by user ID
 
 router.get("/summary/:userId", getTransactionSummary); //this is the route that will be called when the user wants to get a transaction summary by user ID);
 
