@@ -14,6 +14,7 @@ import { API_URL } from "../../../constants/api";
 import { styles } from "../../../assets/styles/create.styles";
 import { COLORS } from "../../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
+import ScanPicker from "../../../components/ScanPicker";
 
 const CATEGORIES = [
   { id: "food", name: "Food & Drinks", icon: "fast-food" },
@@ -82,6 +83,14 @@ const CreateScreen = () => {
     }
   };
 
+// inside CreateScreen, after your useState calls:
+const handleScanned = ({ title: t, amount: a, isExpense: exp, category }) => {
+  if (t) setTitle(t);
+  if (a) setAmount(String(a));
+  setIsExpense(exp);
+  if (category) setSelectedCategory(category);
+};
+
   return (
     <View style={styles.container}>
       {/* HEADER */}
@@ -101,6 +110,10 @@ const CreateScreen = () => {
       </View>
 
       <View style={styles.card}>
+        {/* SCAN RECEIPT */}
+        <ScanPicker onScanned={handleScanned} styles={styles} />
+
+        {/* TYPE SELECTOR */}
         <View style={styles.typeSelector}>
           {/* EXPENSE SELECTOR */}
           <TouchableOpacity

@@ -159,4 +159,24 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
+  scanButton: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 8,
+  paddingVertical: 12,
+  marginBottom: 16,
+  borderRadius: 12,
+  borderWidth: 1,
+  borderStyle: "dashed",
+  borderColor: COLORS.primary,
+  backgroundColor: COLORS.white,
+},
+scanButtonText: {
+  color: COLORS.primary,
+  fontSize: 15,
+  fontWeight: "600",
+},
+
 });
