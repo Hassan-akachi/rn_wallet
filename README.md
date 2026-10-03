@@ -1,9 +1,3 @@
-Here is a professional, well-structured GitHub README template tailored specifically to the tech stack and features of your React Native Wallet/Finance app.
-
-You can copy and paste this directly into your `README.md` file!
-
----
-
 # 💰 RN Wallet (React Native Finance Tracker)
 
 A full-stack React Native mobile application designed to help users track their personal finances, manage expenses, and monitor their financial health in real-time. Built with a modern, serverless-first backend infrastructure.
@@ -26,14 +20,15 @@ This project is separated into a mobile frontend and a robust API backend, utili
 * **[Upstash](https://upstash.com/)** - Serverless Redis used to implement strict **Rate Limiting**, protecting the API from spam and brute-force attacks.
 * **[Node-Cron](https://www.npmjs.com/package/node-cron)** - Scheduled background tasks and cron jobs (e.g., generating weekly reports or cleaning up stale data).
 
-### **Hosting & Deployment**
+### **AI Integration**
 
-* **[Render](https://render.com/)** - Cloud platform used for deploying and hosting the Express API backend.
+* **[Google Gemini AI](https://aistudio.google.com/)** - Utilizes `gemini-3.6-flash` vision models to automatically scan receipts, extract transaction data (amount, title), and intelligently categorize expenses.
 
 ---
 
 ## ✨ Key Features
 
+* **AI-Powered Receipt Scanning:** Upload or photograph physical receipts and invoices to automatically extract totals, merchants, and categories using Google Gemini.
 * **Secure Authentication:** Password and OTP verification powered by Clerk.
 * **Transaction Management:** Add, delete, and view income and expenses.
 * **Real-Time Dashboard:** Calculates total balance, total income, and total expenses dynamically.
@@ -92,10 +87,11 @@ npm install
 
 ```
 
-Create a `.env` file in the `mobile` directory with your Clerk publishable key:
+Create a `.env` file in the `mobile` directory with your Clerk and Gemini keys:
 
 ```env
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_clerk_key_here
+EXPO_PUBLIC_GEMINI_API_KEY=your_google_gemini_api_key_here
 
 ```
 
